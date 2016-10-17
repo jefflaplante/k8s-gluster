@@ -1,0 +1,15 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: glustertest 
+    image: gcr.io/google_containers/pause-amd64:3.0 
+    volumeMounts:
+    - mountPath: "/home"
+      name: gluster-volume
+  volumes:
+  - name: gluster-volume
+    persistentVolumeClaim:
+      claimName: glusterfs-claim
